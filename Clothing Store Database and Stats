@@ -1,0 +1,19 @@
+--Create a clothing store database.
+
+CREATE TABLE Diverse_Fashion ( id INTEGER PRIMARY KEY, Item TEXT, Fabric TEXT, Quantity INTEGER, Size TEXT, Price INTEGER );
+INSERT INTO Diverse_Fashion VALUES ( 1, "Jeans", "Denim", 5, "Small", 30.99);
+INSERT INTO Diverse_Fashion VALUES (2, "Shirts", "Silk", 2, "Large", 15.99);
+INSERT INTO Diverse_Fashion VALUES ( 3, "Shorts", "Denim", 3, "Medium", 17.99);
+INSERT INTO Diverse_Fashion VALUES ( 4, "Jackets", "Cotton", 2, "Large", 35.99);
+INSERT INTO Diverse_Fashion VALUES ( 5, "Skirts", "Denim", 3, "Small", 15.99);
+SELECT * FROM Diverse_Fashion;
+
+--Display database ordered by price.
+
+
+SELECT * FROM Diverse_Fashion ORDER BY Price;
+
+--What is the sum of all items?
+
+
+SELECT SUM(Price) FROM Diverse_Fashion
