@@ -1,0 +1,50 @@
+--Create movie stars Database
+
+CREATE TABLE movie_stars (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER, birthplace_state TEXT);
+
+INSERT INTO movie_stars (name, age, birthplace_state) VALUES ("Adams Sandler", 56, "New York");
+INSERT INTO movie_stars(name, age, birthplace_state) VALUES ("Viola Davis", 57, "South Carolina");
+INSERT INTO movie_stars (name, age, birthplace_state) VALUES ("Ryan Reynolds", 46, "Canada");
+INSERT INTO movie_stars (name, age, birthplace_state) VALUES ("Jennifer Aniston", 54, "California");
+INSERT INTO movie_stars (name, age, birthplace_state) VALUES("Brad Pitt", 59, "Oklahoma");
+INSERT INTO movie_stars (name, age, birthplace_state) VALUES("Sandra Bullock", 58 , "Virginia");
+INSERT INTO movie_stars (name, age, birthplace_state) VALUES("Scarlett Johansson", 38, "New York");
+
+--Create database of movies the stars were featured in.
+
+CREATE TABLE Ft_movies (id INTEGER PRIMARY KEY AUTOINCREMENT, starred_film TEXT, release_yr TEXT, star_id INTEGER );
+
+INSERT INTO Ft_movies (starred_film, release_yr, star_id) VALUES ("Big Daddy", 1999, 1);
+INSERT INTO Ft_movies(starred_film, release_yr, star_id) VALUES ("Custody", 2016, 2);
+INSERT INTO Ft_movies (starred_film, release_yr, star_id) VALUES ("Deadpool", 2016, 3);
+INSERT INTO Ft_movies (starred_film, release_yr, star_id) VALUES ("Mother's Day", 2016, 4);
+INSERT INTO Ft_movies (starred_film, release_yr, star_id) VALUES ("Bullet Train", 2022, 5);
+INSERT INTO Ft_movies (starred_film, release_yr, star_id) VALUES("Bird Box", 2018, 5);
+INSERT INTO Ft_movies (starred_film, release_yr, star_id) VALUES("Black Widow", 2021, 7);
+
+--Create database of the marriages between stars.
+
+CREATE TABLE marriages (id INTEGER PRIMARY KEY AUTOINCREMENT, Partner1_ID INTEGER, Partner2_ID INTEGER, Marriage_Yr INTEGER, Marriage_Duration INTEGER);
+
+INSERT INTO marriages (Partner1_ID, Partner2_ID, Marriage_Yr, Marriage_Duration) VALUES (3,7,2008,3);
+INSERT INTO marriages (Partner1_ID, Partner2_ID, Marriage_Yr, Marriage_Duration) VALUES (4, 5, 2000, 5);
+
+CREATE TABLE marriages (id INTEGER PRIMARY KEY AUTOINCREMENT, Partner1_ID INTEGER, Partner2_ID INTEGER, Marriage_Yr INTEGER, Marriage_Duration INTEGER);
+
+INSERT INTO marriages (Partner1_ID, Partner2_ID, Marriage_Yr, Marriage_Duration) VALUES (2,6,2008,3);
+INSERT INTO marriages (Partner1_ID, Partner2_ID, Marriage_Yr, Marriage_Duration) VALUES (3, 4, 2000, 5);
+
+--Display all movies and names of stars that released a film before or equal to the year 2018?
+
+SELECT name, release_yr, starred_film FROM movie_stars
+    JOIN Ft_movies
+    ON movie_stars.id=Ft_movies.star_id 
+    WHERE release_yr<=2018;
+   
+ --Display names of both partners, age and duration of marriage?
+    
+SELECT a.name AS "Partner1", a.age, b.name AS "Partner2", b.age, marriage_duration FROM marriages
+    JOIN movie_stars a
+ON marriages.partner1_ID=a.id
+    JOIN movie_stars b
+ON marriages.partner2_ID=b.id;
