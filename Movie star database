@@ -28,9 +28,6 @@ CREATE TABLE marriages (id INTEGER PRIMARY KEY AUTOINCREMENT, Partner1_ID INTEGE
 
 INSERT INTO marriages (Partner1_ID, Partner2_ID, Marriage_Yr, Marriage_Duration) VALUES (3,7,2008,3);
 INSERT INTO marriages (Partner1_ID, Partner2_ID, Marriage_Yr, Marriage_Duration) VALUES (4, 5, 2000, 5);
-
-CREATE TABLE marriages (id INTEGER PRIMARY KEY AUTOINCREMENT, Partner1_ID INTEGER, Partner2_ID INTEGER, Marriage_Yr INTEGER, Marriage_Duration INTEGER);
-
 INSERT INTO marriages (Partner1_ID, Partner2_ID, Marriage_Yr, Marriage_Duration) VALUES (2,6,2008,3);
 INSERT INTO marriages (Partner1_ID, Partner2_ID, Marriage_Yr, Marriage_Duration) VALUES (3, 4, 2000, 5);
 
