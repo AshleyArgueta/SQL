@@ -1,0 +1,61 @@
+ # I'll be potentially answering example questions in the final SQL project
+
+#1. 
+SELECT Customerid, Firstname, Lastname, Country, State 
+FROM CHINOOK.customers ;
+
+
+#2.
+SELECT Customerid,country FROM CHINOOK.customers
+Where Country = "Canada" ;
+
+#3.
+SELECT COUNT (*) FROM CHINOOK.invoices
+WHERE InvoiceDate LIKE "%2009%" ;
+
+#4. 
+SELECT SUPPORTREPID, COUNT(Supportrepid) FROM CUSTOMERS
+left join INVOICES
+ON customers.CustomerId=invoices.CustomerId
+WHERE invoicedate LIKE "%2010%"
+GROUP BY Supportrepid ;
+
+
+#5.
+SELECT SUM(invoice_items.Quantity) FROM chinook.invoice_items
+INNER JOIN chinook.invoices
+ON invoice_items.InvoiceId=invoices.InvoiceId
+WHERE InvoiceDate LIKE "%2011%" ;
+
+#6.
+SELECT Tracks.Milliseconds,tracks.TrackId, tracks.Name, invoice_items.Quantity FROM chinook.tracks
+LEFT JOIN chinook.invoice_items
+ON tracks.TrackId=invoice_items.TrackId
+GROUP BY tracks.Milliseconds
+HAVING MAX(tracks.Milliseconds)
+ORDER BY tracks.Milliseconds DESC LIMIT 1 ;
+
+#7.
+SELECT * FROM chinook.employees
+WHERE title = "Sales Support Agent" ;
+
+#8.
+SELECT DISTINCT billingcountry 
+FROM INVOICES
+WHERE billingcountry <> "USA" ;
+
+#9.
+SELECT trackid, count(trackid) FROM playlist_track
+GROUP BY trackid
+ORDER BY COUNT(trackid) DESC ;
+
+
+#10.
+SELECT ar.name as Artist, t.Name as Track, i.InvoiceLineId
+FROM chinook.Invoice_items i
+LEFT JOIN chinook.tracks t 
+ON i.TrackID=t.TrackID
+INNER JOIN chinook.albums a
+ON a.AlbumID=t.AlbumID
+LEFT JOIN chinook.artists ar
+ON ar.ArtistID=a.ArtistID ;
