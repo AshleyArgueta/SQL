@@ -28,11 +28,9 @@ time_signature integer NOT NULL
 
 #Next, I explored the data using the following SQL. 
 
-#First I determined what is the average song key by artist and track? 
+#First I determined what is the average song key? 
 SELECT SUM(song_key)/COUNT(artist_name) 
-AS "AVG SONGKEY",artist_name,TRACK_NAME FROM BIT_DB.Spotifydata
-GROUP BY Artist_name 
-ORDER BY "AVG SONGKEY" DESC
+AS "AVG SONGKEY" FROM BIT_DB.Spotifydata
 
 
 
